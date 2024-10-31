@@ -51,7 +51,7 @@ class Server:
             return self.dataset()[start:end]
         else:
             return []
-        
+
     def get_hyper(self, page: int = 1, page_size: int = 10) -> List[List]:
         """
         return the appropriate page of the dataset
@@ -71,9 +71,9 @@ class Server:
                 "prev_page": page - 1 if page > 1 else None,
                 "total_pages": total_pages
             }
-        
+
         start, end = index_range(page, page_size)
-        paginated = self.dataset()[start:end]      
+        paginated = self.dataset()[start:end]
 
         metadata = {
             "page_size": page_size,
@@ -83,5 +83,5 @@ class Server:
             "prev_page": page - 1 if page > 1 else None,
             "total_pages": total_pages
         }
-        
+
         return metadata
