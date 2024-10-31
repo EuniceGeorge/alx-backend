@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """ function"""
 
+
 def index_range(page, page_size):
     """ index_range"""
     start_page = (page-1) * page_size
