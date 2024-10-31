@@ -40,8 +40,8 @@ class Server:
         """
         return the appropriate page of the dataset
         """
-        assert type(page) == int and type(page_size) == int
-        assert page > 0 and page_size > 0
+        assert isinstance(page, int) and page > 0,
+        assert isinstance(page_size, int) and page_size > 0,
 
         dataset_length = len(self.dataset())
         total_pages = math.ceil(dataset_length / page_size)
