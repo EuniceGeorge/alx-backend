@@ -7,5 +7,19 @@ def get_locale():
 
 app = Flask(__name__)
 
+class Config():
+    LANGUAGES = ["en", "fr"]
+    BABEL_DEFAULT_LOCALE = "en"
+    BABEL_DEFAULT_TIMEZONE = "UTC"
+
+app.config.from_object(Config)
 
 babel = Babel(app, locale_selector=get_locale)
+
+
+@app.route('/')
+def index():
+    return render_template('index.html', title=_("home_title"), header=_("home_header"))
+
+if __name_ = '__main__':
+    app.run(debug=True)
