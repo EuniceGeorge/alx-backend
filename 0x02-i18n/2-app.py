@@ -17,9 +17,15 @@ app.config.from_object(Config)
 babel = Babel(app, locale_selector=get_locale)
 
 
-@app.route('/')
-def index():
-    return render_template('index.html', title=_("home_title"), header=_("home_header"))
+@app.route('/', methods=['GET'], strict_slashes=False)
+def index() -> str:
+    return render_template('2-index.html')
+
+
+@babel.localeselector
+def get_locale() -> str:
+    """ get locale language code from request accepted languages """
+    return request.accept_languages.best_match(app.config['LANGUAGES'])
 
 if __name_ = '__main__':
     app.run(debug=True)
